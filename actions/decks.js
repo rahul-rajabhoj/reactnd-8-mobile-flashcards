@@ -1,9 +1,9 @@
 import { getDecks } from "../utils/api"
 
-const RECEIVE_DECKS = 'RECEIVE_DECKS'
-const ADD_DECK = 'ADD_DECK'
-const ADD_CARD = 'ADD_CARD'
-const DELETE_DECK = 'DELETE_DECK'
+export const RECEIVE_DECKS = 'RECEIVE_DECKS'
+export const ADD_DECK = 'ADD_DECK'
+export const ADD_CARD = 'ADD_CARD'
+export const DELETE_DECK = 'DELETE_DECK'
 
 export function getAllDecks() {
     return (dispatch) => {
