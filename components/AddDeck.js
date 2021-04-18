@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux'
 import { addDeck } from '../actions/decks';
 
@@ -42,26 +42,28 @@ class AddDeck extends React.Component {
     render() {
         const { title, showError } = this.state
         return (
-            <View>
-                <Text style={styles.heading}>
-                    What is the title of your new Deck?
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.onChangeText}
-                    value={title}
-                    placeholder="Deck Title..."
-                />
-                {showError === true && <Text style={styles.errorMsg}>
-                    Please enter deck title
-                </Text>}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={this.onSubmit}
-                >
-                    <Text style={styles.buttonText}>Submit</Text>
-                </TouchableOpacity>
-            </View>
+            <SafeAreaView>
+                <View>
+                    <Text style={styles.heading}>
+                        What is the title of your new Deck?
+                    </Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={this.onChangeText}
+                        value={title}
+                        placeholder="Deck Title..."
+                    />
+                    {showError === true && <Text style={styles.errorMsg}>
+                        Please enter deck title
+                    </Text>}
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={this.onSubmit}
+                    >
+                        <Text style={styles.buttonText}>Submit</Text>
+                    </TouchableOpacity>
+                </View>
+            </SafeAreaView>
         )
     }
 }
@@ -77,7 +79,8 @@ const styles = StyleSheet.create({
         margin: 12,
         fontSize: 20,
         borderWidth: 1,
-        paddingLeft: 10
+        paddingLeft: 10,
+        borderRadius: 10,
     },
     button: {
         alignSelf: 'center',

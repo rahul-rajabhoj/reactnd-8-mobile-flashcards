@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Platform, StatusBar } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Platform, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
@@ -31,12 +31,20 @@ const Tab =
     ? createBottomTabNavigator()
     : createMaterialTopTabNavigator()
 
+const CustomStatusBar = ({backgroundColor, ...props}) => (
+  <View style={[styles.statusBar, { backgroundColor }]}>
+    <SafeAreaView>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </SafeAreaView>
+  </View>
+);
+
 class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducers, middlewares)}>
         <NavigationContainer>
-          <StatusBar style="auto" />
+          <CustomStatusBar backgroundColor="black" barStyle="light-content" />
           <Tab.Navigator>
             <Tab.Screen name="Decks" component={DecksScreen} />
             <Tab.Screen name="Add New Deck" component={AddDeckScreen} />
@@ -46,5 +54,11 @@ class App extends React.Component {
     )
   } 
 }
+
+const styles = StyleSheet.create({
+  statusBar: {
+    height: StatusBar.currentHeight,
+  }
+});
 
 export default App
