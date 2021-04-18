@@ -73,9 +73,36 @@ class App extends React.Component {
               name="Home"
               component={TabNav}
               options={{headerShown: false}}/>
-            <Stack.Screen name="DeckDetail" component={DeckDetail} />
-            <Stack.Screen name="AddCard" component={AddCard} />
-            <Stack.Screen name="DeckQuiz" component={DeckQuiz} />
+            <Stack.Screen 
+              name="DeckDetail" 
+              component={DeckDetail} 
+              options={{
+                headerTintColor: 'white', 
+                headerStyle: {
+                  backgroundColor: 'purple',
+                }
+              }}
+            />
+            <Stack.Screen 
+              name="AddCard" 
+              component={AddCard} 
+              options={{
+                headerTintColor: 'white', 
+                headerStyle: {
+                  backgroundColor: 'purple',
+                }
+              }}
+            />
+            <Stack.Screen 
+              name="DeckQuiz" 
+              component={DeckQuiz} 
+              options={{
+                headerTintColor: 'white', 
+                headerStyle: {
+                  backgroundColor: 'purple',
+                }
+              }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

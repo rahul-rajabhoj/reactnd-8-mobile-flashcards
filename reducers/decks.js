@@ -54,11 +54,12 @@ export default function decks(state = {}, action) {
         case DELETE_DECK: {
             const { id } = action
 
-            delete state[id]
+            const newState = JSON.parse(JSON.stringify(state))
+            delete newState[id]
 
             deleteDeck(id)
             
-            return state
+            return newState
         }
 
         default: 

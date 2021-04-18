@@ -7,7 +7,8 @@ class AddDeck extends React.Component {
 
     state = {
         title: '',
-        showError: false
+        showError: false,
+        isSubmitted: false,
     }
 
     onChangeText = (inputText) => {
@@ -24,7 +25,7 @@ class AddDeck extends React.Component {
             dispatch(addDeck(title))
 
             this.setState({
-                title: ''
+                isSubmitted: true
             })
         } else {
             this.toggleShowError(true)
@@ -37,8 +38,25 @@ class AddDeck extends React.Component {
         })
     }
 
+    showDeckDetail = (deckId) => {
+        const { navigation } = this.props
+        navigation.navigate('DeckDetail', { deckId: deckId });
+        this.setState({
+            title: '',
+            isSubmitted: false,
+        })
+    }
+
     render() {
-        const { title, showError } = this.state
+        const { title, showError, isSubmitted } = this.state
+
+        if(isSubmitted === true) {
+            const { decks } = this.props
+            const newDeck = Object.values(decks).filter((deck) => deck.title === title)
+
+            this.showDeckDetail(newDeck[0].id)
+        }
+
         return (
             <SafeAreaView>
                 <View>
@@ -100,4 +118,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect()(AddDeck)
+function mapStateToProps({ decks }) {
+    return {
+        decks
+    }
+}
+
+export default connect(mapStateToProps)(AddDeck)

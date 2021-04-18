@@ -1,20 +1,120 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { deleteDeck } from '../actions/decks'
 
 class DeckDetail extends React.Component {
+
+    addCard = () => {
+        const { deck, navigation } = this.props
+        navigation.navigate('AddCard', { deckId: deck.id });
+    }
+
+    startQuiz = () => {
+        const { deck, navigation } = this.props
+        navigation.navigate('DeckQuiz', { deckId: deck.id });
+    }
+
+    deleteDeck = () => {
+        const { goBack, remove } = this.props
+        goBack()
+        remove()
+    }
+
     render() {
-        const { deckId, deck, goBack, remove } = this.props
+        const { deck, navigation } = this.props
+
+        navigation.setOptions({ title: deck?.title }); 
+
         return (
-            <View>
-                <Text>
-                    DeckDetail
-                </Text>
+            <View style={styles.container}>
+                <Text style={styles.deckTitle}>{deck?.title}</Text>
+
+                <Text style={styles.cardInfo}>{deck?.cards?.length} Cards</Text>
+
+                <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={this.addCard}
+                >
+                    <Text style={styles.addButtonText}>Add Card</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.quizButton}
+                    onPress={this.startQuiz}
+                >
+                    <Text style={styles.quizButtonText}>Start Quiz</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.deleteDeckButton}
+                    onPress={this.deleteDeck}
+                >
+                    <Text style={styles.deleteDeckButtonText}>Delete Deck</Text>
+                </TouchableOpacity>
+
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    deckTitle: {
+        fontSize: 50,
+        fontWeight: '900',
+        marginBottom: 10,
+        textAlign: 'center'
+    },
+    cardInfo: {
+        color: 'grey',
+        fontSize: 20,
+        marginBottom: 100,
+    },
+    addButton: {
+        justifyContent: 'center',
+        alignItems: "center",
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderRadius: 10,
+        marginBottom: 20,
+        height: 50,
+        width: 200,
+    },
+    addButtonText: {
+        color: 'black',
+    },
+    quizButton: {
+        justifyContent: 'center',
+        alignItems: "center",
+        backgroundColor: 'black',
+        borderRadius: 10,
+        marginBottom: 20,
+        height: 50,
+        width: 200,
+    },
+    quizButtonText: {
+        color: 'white',
+    },
+    deleteDeckButton: {
+        justifyContent: 'center',
+        alignItems: "center",
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: 'red',
+        borderRadius: 10,
+        marginBottom: 20,
+        height: 50,
+        width: 200,
+    },
+    deleteDeckButtonText: {
+        color: 'red',
+    },
+})
 
 function mapStateToProps({ decks }, {route}) {
     const { deckId } = route.params
