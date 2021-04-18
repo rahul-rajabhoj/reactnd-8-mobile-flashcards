@@ -84,7 +84,7 @@ class App extends React.Component {
               }}
             />
             <Stack.Screen 
-              name="AddCard" 
+              name="Add Card" 
               component={AddCard} 
               options={{
                 headerTintColor: 'white', 
@@ -94,7 +94,7 @@ class App extends React.Component {
               }}
             />
             <Stack.Screen 
-              name="DeckQuiz" 
+              name="Deck Quiz" 
               component={DeckQuiz} 
               options={{
                 headerTintColor: 'white', 

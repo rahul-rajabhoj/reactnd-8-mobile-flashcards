@@ -7,12 +7,12 @@ class DeckDetail extends React.Component {
 
     addCard = () => {
         const { deck, navigation } = this.props
-        navigation.navigate('AddCard', { deckId: deck.id });
+        navigation.navigate('Add Card', { deckId: deck.id });
     }
 
     startQuiz = () => {
         const { deck, navigation } = this.props
-        navigation.navigate('DeckQuiz', { deckId: deck.id });
+        navigation.navigate('Deck Quiz', { deckId: deck.id });
     }
 
     deleteDeck = () => {
