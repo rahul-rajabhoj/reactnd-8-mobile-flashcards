@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers'
 import middlewares from './middlewares'
+import Decks from './components/Decks';
 
 class App extends React.Component {
 
@@ -12,8 +13,8 @@ class App extends React.Component {
     return (
       <Provider store={createStore(reducers, middlewares)}>
         <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
           <StatusBar style="auto" />
+          <Decks />
         </View>
       </Provider>
     )
