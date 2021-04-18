@@ -37,7 +37,7 @@ class Decks extends React.Component {
 const styles = StyleSheet.create({
     item: {
         borderWidth: 0.5,
-        borderColor: "grey",
+        borderColor: "purple",
         alignItems: "center",
         backgroundColor: 'white',
         borderRadius: 10,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     cardInfo: {
         textAlign: "center",
-        color: "grey"
+        color: "orange"
     }
 })
 

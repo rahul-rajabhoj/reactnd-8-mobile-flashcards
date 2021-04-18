@@ -1,7 +1,7 @@
 import React from 'react'
-import { SafeAreaView, View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native"
 import { connect } from 'react-redux'
-import { addDeck } from '../actions/decks';
+import { addDeck } from '../actions/decks'
 
 class AddDeck extends React.Component {
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     heading: {
         marginTop: -100,
         fontSize: 40,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     input: {
         height: 50,
@@ -81,11 +81,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingLeft: 10,
         borderRadius: 10,
+        borderColor: 'purple',
     },
     button: {
         alignSelf: 'center',
         alignItems: "center",
-        backgroundColor: 'black',
+        backgroundColor: 'purple',
         borderRadius: 10,
         padding: 10,
         margin: 20,
@@ -97,8 +98,8 @@ const styles = StyleSheet.create({
     },
     errorMsg: {
         color: 'red',
-        textAlign: "center"
+        textAlign: "center",
     }
-});
+})
 
 export default connect()(AddDeck)
