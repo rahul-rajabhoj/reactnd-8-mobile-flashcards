@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Platform, StatusBar } from 'react-native';
+import { View, Platform, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,7 +12,7 @@ import AddDeck from './components/AddDeck'
 
 function DecksScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View>
       <Decks />
     </View>
   );
@@ -46,14 +46,5 @@ class App extends React.Component {
     )
   } 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App
