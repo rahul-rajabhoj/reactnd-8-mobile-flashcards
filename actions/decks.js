@@ -38,7 +38,7 @@ export function addCard(id, question, answer) {
     }
 }
 
-export function ddeleteDeck(id) {
+export function deleteDeck(id) {
     return {
         type: DELETE_DECK,
         id

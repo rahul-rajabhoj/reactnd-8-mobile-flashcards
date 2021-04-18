@@ -15,22 +15,6 @@ import DeckDetail from './components/DeckDetail'
 import AddCard from './components/AddCard'
 import DeckQuiz from './components/DeckQuiz'
 
-function DecksScreen() {
-  return (
-    <View>
-      <Decks />
-    </View>
-  )
-}
-
-function AddDeckScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <AddDeck />
-    </View>
-  )
-}
-
 const Tab =
   Platform.OS === 'ios'
     ? createBottomTabNavigator()
@@ -63,8 +47,8 @@ const TabNav = () => (
       },
     }}
   >
-    <Tab.Screen name="Decks" component={DecksScreen} />
-    <Tab.Screen name="Add New Deck" component={AddDeckScreen} />
+    <Tab.Screen name="Decks" component={Decks} />
+    <Tab.Screen name="Add New Deck" component={AddDeck} />
   </Tab.Navigator>
 )
 

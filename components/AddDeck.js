@@ -14,6 +14,7 @@ class AddDeck extends React.Component {
         this.setState({
             title: inputText
         })
+        this.toggleShowError(false)
     }
 
     onSubmit = () => {
@@ -26,17 +27,14 @@ class AddDeck extends React.Component {
                 title: ''
             })
         } else {
-            this.toggleShowError()
-            setTimeout(() => {
-                this.toggleShowError()
-            }, 2000)
+            this.toggleShowError(true)
         }
     }
 
-    toggleShowError() {
-        this.setState((currentState) => ({
-            showError: !currentState.showError
-        }))
+    toggleShowError(flag) {
+        this.setState({
+            showError: flag
+        })
     }
 
     render() {
@@ -70,7 +68,7 @@ class AddDeck extends React.Component {
 
 const styles = StyleSheet.create({
     heading: {
-        marginTop: -100,
+        marginTop: 200,
         fontSize: 40,
         textAlign: 'center',
     },

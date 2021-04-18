@@ -10,7 +10,7 @@ class Decks extends React.Component {
     }
 
     render() {
-        const { decks } = this.props
+        const { decks, navigation } = this.props
         const deckIdsArray = Object.keys(decks)
         return (
             deckIdsArray.length === 0
@@ -23,7 +23,7 @@ class Decks extends React.Component {
                     <Text></Text>
                     {deckIdsArray.map(id => {
                         return <View key={id}>
-                            <TouchableOpacity style={styles.item} onPress={()=> this.props.navigation.navigate('DeckDetail', { deckId: id })}>
+                            <TouchableOpacity style={styles.item} onPress={()=> navigation.navigate('DeckDetail', { deckId: id })}>
                                 <Text style={DeckTitleStyle}>{ decks[id].title }</Text>
                                 <Text style={styles.cardInfo}>{ decks[id].cards.length } Cards</Text>
                             </TouchableOpacity>
