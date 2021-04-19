@@ -1,9 +1,13 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import { connect } from 'react-redux'
 import { deleteDeck } from '../actions/decks'
 
 class DeckDetail extends React.Component {
+
+    state = {
+        bounceValue: new Animated.Value(1),
+    }
 
     addCard = () => {
         const { deck, navigation } = this.props
@@ -21,13 +25,22 @@ class DeckDetail extends React.Component {
         remove()
     }
 
+    componentDidMount() {
+        const { bounceValue } = this.state
+        Animated.sequence([
+            Animated.timing(bounceValue, { duration: 200, toValue: 1.04, useNativeDriver: false}),
+            Animated.spring(bounceValue, { toValue: 1, friction: 4})
+        ]).start()
+    }
+
     render() {
+        const { bounceValue } = this.state
         const { deck, navigation } = this.props
 
         navigation.setOptions({ title: deck?.title }); 
 
         return (
-            <View style={styles.container}>
+            <Animated.View style={[styles.container, {transform: [{scale: bounceValue}]}]}>
                 <Text style={styles.deckTitle}>{deck?.title}</Text>
 
                 <Text style={styles.cardInfo}>{deck?.cards?.length} Cards</Text>
@@ -52,8 +65,7 @@ class DeckDetail extends React.Component {
                 >
                     <Text style={styles.deleteDeckButtonText}>Delete Deck</Text>
                 </TouchableOpacity>
-
-            </View>
+            </Animated.View>
         )
     }
 }
