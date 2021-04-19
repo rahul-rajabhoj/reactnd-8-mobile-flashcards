@@ -87,7 +87,7 @@ class DeckQuiz extends React.Component {
                 {   questionAnswered === cards.length && (
                     <View style={styles.body}>
                         <Text style={styles.mainText}>
-                            You Scored {score}/{cards.length}
+                            You Scored {Math.ceil(score/cards.length * 100)}%
                         </Text>
                         <TouchableOpacity
                             style={styles.toggleShowQuestionButton}
