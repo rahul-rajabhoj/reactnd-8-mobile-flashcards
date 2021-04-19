@@ -36,6 +36,14 @@ class DeckQuiz extends React.Component {
         navigation.goBack()
     }
 
+    reset = () => {
+        this.setState({
+            questionAnswered: 0,
+            score: 0,
+            showQuestion: true
+        })
+    }
+
     render() {
         const { questionAnswered, score, showQuestion } = this.state
         const { cards } = this.props
@@ -89,6 +97,14 @@ class DeckQuiz extends React.Component {
                         <Text style={styles.mainText}>
                             You Scored {Math.ceil(score/cards.length * 100)}%
                         </Text>
+                        <TouchableOpacity
+                            style={styles.correctButton}
+                            onPress={this.reset}
+                        >
+                            <Text style={styles.buttonText}>
+                                Take Quiz Again
+                            </Text>
+                        </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.toggleShowQuestionButton}
                             onPress={this.goBack}
