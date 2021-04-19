@@ -14,6 +14,7 @@ import AddDeck from './components/AddDeck'
 import DeckDetail from './components/DeckDetail'
 import AddCard from './components/AddCard'
 import DeckQuiz from './components/DeckQuiz'
+import { setLocalNotification } from './utils/helpers';
 
 const Tab =
   Platform.OS === 'ios'
@@ -63,6 +64,10 @@ const CustomStatusBar = ({backgroundColor, ...props}) => (
 )
 
 class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducers, middlewares)}>

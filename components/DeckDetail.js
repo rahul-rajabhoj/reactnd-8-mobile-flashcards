@@ -29,7 +29,7 @@ class DeckDetail extends React.Component {
         const { bounceValue } = this.state
         Animated.sequence([
             Animated.timing(bounceValue, { duration: 200, toValue: 1.04, useNativeDriver: false}),
-            Animated.spring(bounceValue, { toValue: 1, friction: 4})
+            Animated.spring(bounceValue, { toValue: 1, friction: 4, useNativeDriver: false})
         ]).start()
     }
 
